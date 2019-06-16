@@ -1,7 +1,5 @@
 package com.yuren.cls.c14;
 
-import java.time.Year;
-
 /**
  * Created with Intellij IDEA.
  * Description:
@@ -18,15 +16,15 @@ public class Line {
         this.end = end;
     }
 
-    public double length() {
-        return start.distance(end);
-    }
-
     public static void main(String[] args) {
         Point start = new Point(2, 3);
         Point end = new Point(3, 4);
 
         Line line = new Line(start, end);
         System.out.println(line.length());
+    }
+
+    public double length() {
+        return start.distance(end);
     }
 }

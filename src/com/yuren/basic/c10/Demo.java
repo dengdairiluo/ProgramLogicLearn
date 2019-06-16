@@ -17,7 +17,7 @@ public class Demo {
         int num = reader.nextInt();
         int password = 6789;
         while (num != password) {
-		    System.out.println("please input password");
+            System.out.println("please input password");
             num = reader.nextInt();
         }
         System.out.println("correct");

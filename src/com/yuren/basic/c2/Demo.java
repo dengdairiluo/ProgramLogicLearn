@@ -9,9 +9,9 @@ package com.yuren.basic.c2;
  */
 public class Demo {
 
-	/**
-	 * @param args
-	 */
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         byte b = 23;
         short s = 3333;
