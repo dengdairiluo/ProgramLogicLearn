@@ -1,5 +1,7 @@
 package com.yuren.commoncls.c31;
 
+import java.util.Arrays;
+
 /**
  * Created with Intellij IDEA.
  * Description:

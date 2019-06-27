@@ -1,5 +1,8 @@
 package com.yuren.commoncls.c34;
 
+import java.util.Arrays;
+import java.util.Random;
+
 /**
  * Created with Intellij IDEA.
  * Description:
