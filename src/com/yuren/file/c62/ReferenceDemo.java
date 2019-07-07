@@ -1,5 +1,12 @@
 package com.yuren.file.c62;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 /**
  * Created with Intellij IDEA.
  * Description:

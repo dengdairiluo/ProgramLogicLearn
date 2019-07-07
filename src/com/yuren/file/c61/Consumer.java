@@ -1,6 +1,8 @@
 package com.yuren.file.c61;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Random;
 
 /**
  * Created with Intellij IDEA.
