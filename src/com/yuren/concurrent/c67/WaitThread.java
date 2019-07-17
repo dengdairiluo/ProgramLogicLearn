@@ -10,6 +10,14 @@ package com.yuren.concurrent.c67;
 public class WaitThread extends Thread {
     private volatile boolean fire = false;
 
+    public static void main(String[] args) throws InterruptedException {
+        WaitThread waitThread = new WaitThread();
+        waitThread.start();
+        Thread.sleep(1000);
+        System.out.println("fire");
+        waitThread.fire();
+    }
+
     @Override
     public void run() {
         try {
@@ -26,13 +34,5 @@ public class WaitThread extends Thread {
     public synchronized void fire() {
         this.fire = true;
         notify();
-    }
-
-    public static void main(String[] args) throws InterruptedException {
-        WaitThread waitThread = new WaitThread();
-        waitThread.start();
-        Thread.sleep(1000);
-        System.out.println("fire");
-        waitThread.fire();
     }
 }

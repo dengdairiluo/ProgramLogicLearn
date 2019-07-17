@@ -1,48 +1,55 @@
-package com.yuren.concurrent.c77;
+package com.yuren.concurrent.c79;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.concurrent.CompletionService;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created with Intellij IDEA.
  * Description:
  *
  * @author lujiang
- * @date 2019-07-16 23:29
+ * @date 2019-07-17 23:43
  */
-public class InvokeAllDemo {
-    public static void main(String[] args) {
+public class CompletionServiceDemo {
+    public static void parse(List<String> urls) throws InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(10);
-        String url1 = "http://www.cnblogs.com/swiftma/p/5396551.html";
-        String url2 = "http://www.cnblogs.com/swiftma/p/5399315.html";
-
-        Collection<UrlTitleParser> tasks = Arrays.asList(new UrlTitleParser(url1), new UrlTitleParser(url2));
         try {
-            List<Future<String>> results = executor.invokeAll(tasks, 10,
-                    TimeUnit.SECONDS);
-            for (Future<String> result : results) {
+            CompletionService<String> completionService = new ExecutorCompletionService<>(
+                    executor);
+            for (String url : urls) {
+                completionService.submit(new UrlTitleParser(url));
+            }
+            for (int i = 0; i < urls.size(); i++) {
+                Future<String> result = completionService.take();
                 try {
                     System.out.println(result.get());
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        } finally {
+            executor.shutdown();
         }
+    }
 
-        executor.shutdown();
+    public static void main(String[] args) throws InterruptedException {
+        List<String> urls = Arrays.asList(new String[]{
+                "http://www.cnblogs.com/swiftma/p/5396551.html",
+                "http://www.cnblogs.com/swiftma/p/5399315.html",
+                "http://www.cnblogs.com/swiftma/p/5405417.html",
+                "http://www.cnblogs.com/swiftma/p/5409424.html"});
+        parse(urls);
     }
 
     static class UrlTitleParser implements Callable<String> {
@@ -57,10 +64,9 @@ public class InvokeAllDemo {
             Document doc = Jsoup.connect(url).get();
             Elements elements = doc.select("head title");
             if (elements.size() > 0) {
-                return elements.get(0).text();
+                return url + ": " + elements.get(0).text();
             }
             return null;
         }
     }
-
 }

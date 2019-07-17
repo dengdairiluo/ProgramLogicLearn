@@ -15,15 +15,6 @@ import java.util.concurrent.Future;
  * @date 2019-07-16 23:29
  */
 public class BasicDemo {
-    static class Task implements Callable<Integer> {
-        @Override
-        public Integer call() throws Exception {
-            int sleepSeconds = new Random().nextInt(1000);
-            Thread.sleep(sleepSeconds);
-            return sleepSeconds;
-        }
-    }
-
     public static void main(String[] args) throws InterruptedException {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Future<Integer> future = executor.submit(new Task());
@@ -37,5 +28,14 @@ public class BasicDemo {
             e.printStackTrace();
         }
         executor.shutdown();
+    }
+
+    static class Task implements Callable<Integer> {
+        @Override
+        public Integer call() throws Exception {
+            int sleepSeconds = new Random().nextInt(1000);
+            Thread.sleep(sleepSeconds);
+            return sleepSeconds;
+        }
     }
 }
