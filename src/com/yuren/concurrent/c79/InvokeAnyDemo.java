@@ -51,8 +51,8 @@ public class InvokeAnyDemo {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        List<String> engines = Arrays.asList(new String[]{"www.baidu.com",
-                "www.sogou.com", "www.so.com", "www.google.com"});
+        List<String> engines = Arrays.asList("www.baidu.com",
+                "www.sogou.com", "www.so.com", "www.google.com");
         System.out.println(search(engines, "老马说编程"));
     }
 

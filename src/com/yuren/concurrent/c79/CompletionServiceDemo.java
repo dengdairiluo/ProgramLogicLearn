@@ -44,11 +44,10 @@ public class CompletionServiceDemo {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        List<String> urls = Arrays.asList(new String[]{
-                "http://www.cnblogs.com/swiftma/p/5396551.html",
+        List<String> urls = Arrays.asList("http://www.cnblogs.com/swiftma/p/5396551.html",
                 "http://www.cnblogs.com/swiftma/p/5399315.html",
                 "http://www.cnblogs.com/swiftma/p/5405417.html",
-                "http://www.cnblogs.com/swiftma/p/5409424.html"});
+                "http://www.cnblogs.com/swiftma/p/5409424.html");
         parse(urls);
     }
 

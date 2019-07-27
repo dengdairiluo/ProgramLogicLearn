@@ -13,12 +13,12 @@ import java.util.Iterator;
  */
 public class MyCollection<E> extends AbstractCollection<E> {
     DynamicArray<E> darr;
-    
-    public MyCollection(){
+
+    public MyCollection() {
         darr = new DynamicArray<>();
     }
-    
-    public MyCollection(Collection<? extends E> c){
+
+    public MyCollection(Collection<? extends E> c) {
         this();
         addAll(c);
     }

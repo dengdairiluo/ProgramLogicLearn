@@ -37,7 +37,7 @@ public class GenericDemo {
         }
 
         // 方法的泛型参数
-        Method m = cls.getMethod("test", new Class[]{List.class});
+        Method m = cls.getMethod("test", List.class);
         for (Type t : m.getGenericParameterTypes()) {
             System.out.println(t);
         }

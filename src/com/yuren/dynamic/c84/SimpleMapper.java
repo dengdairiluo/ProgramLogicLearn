@@ -50,7 +50,7 @@ public class SimpleMapper {
         } else if (type == String.class) {
             f.set(obj, value);
         } else {
-            Constructor<?> ctor = type.getConstructor(new Class[]{String.class});
+            Constructor<?> ctor = type.getConstructor(String.class);
             f.set(obj, ctor.newInstance(value));
         }
     }

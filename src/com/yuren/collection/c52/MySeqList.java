@@ -13,16 +13,16 @@ import java.util.ListIterator;
  */
 public class MySeqList<E> extends AbstractSequentialList<E> {
     private DynamicArray<E> darr;
-    
-    public MySeqList(){
+
+    public MySeqList() {
         darr = new DynamicArray<>();
     }
-    
-    public MySeqList(Collection<? extends E> c){
+
+    public MySeqList(Collection<? extends E> c) {
         this();
         addAll(c);
     }
-    
+
     @Override
     public ListIterator<E> listIterator(int index) {
         return new DynamicArrayListIterator<>(index, darr);
