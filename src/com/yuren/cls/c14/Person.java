@@ -25,13 +25,13 @@ public class Person {
     }
 
     public static void main(String[] args) {
-        Person laoma = new Person("老马");
-        Person xiaoma = new Person("小马");
+        Person yuRen = new Person("愚人");
+        Person yuZhe = new Person("愚者");
 
-        xiaoma.setFather(laoma);
-        laoma.setChildren(new Person[]{xiaoma});
+        yuZhe.setFather(yuRen);
+        yuRen.setChildren(new Person[]{yuZhe});
 
-        System.out.println(xiaoma.getFather().getName());
+        System.out.println(yuZhe.getFather().getName());
     }
 
     public String getName() {
