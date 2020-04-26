@@ -1,7 +1,6 @@
 package com.yuren.java8.c91;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.concurrent.ExecutorService;
@@ -31,12 +30,7 @@ public class AnonymousDemo {
 
 
         ExecutorService executor = Executors.newFixedThreadPool(100);
-        executor.submit(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("hello world");
-            }
-        });
+        executor.submit(() -> System.out.println("hello world"));
     }
 
 }
